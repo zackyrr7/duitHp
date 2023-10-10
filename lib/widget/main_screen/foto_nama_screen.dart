@@ -1,5 +1,7 @@
+import 'package:duithp/screen/pengingat_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 class FotoNama extends StatelessWidget {
   const FotoNama({
@@ -37,13 +39,24 @@ class FotoNama extends StatelessWidget {
         ),
         Row(
           children: [
-            CircleAvatar(
-              radius: ScreenUtil().setSp(15),
-              backgroundColor: const Color(0xFF65C8AC),
-              child: Icon(
-                Icons.alarm,
-                size: ScreenUtil().setSp(20),
-                color: Colors.white,
+            GestureDetector(
+              onTap: () {
+                PersistentNavBarNavigator.pushDynamicScreen(
+                  context,
+                  screen: MaterialPageRoute(builder: ((context) {
+                    return const PengingatScreen();
+                  })),
+                  withNavBar: false,
+                );
+              },
+              child: CircleAvatar(
+                radius: ScreenUtil().setSp(15),
+                backgroundColor: const Color(0xFF65C8AC),
+                child: Icon(
+                  Icons.alarm,
+                  size: ScreenUtil().setSp(20),
+                  color: Colors.white,
+                ),
               ),
             ),
             SizedBox(
