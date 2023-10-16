@@ -1,6 +1,8 @@
 import 'package:duithp/constant.dart';
+import 'package:duithp/screen/add_reminder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 class PengingatScreen extends StatefulWidget {
   const PengingatScreen({super.key});
@@ -33,7 +35,9 @@ class _PengingatScreenState extends State<PengingatScreen> {
               child: Text(
                 "hari, 11 bulan",
                 style: TextStyle(
-                    color: biruTeks, fontSize: ScreenUtil().setSp(12)),
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: ScreenUtil().setSp(12)),
               ),
             ),
             Padding(
@@ -67,8 +71,19 @@ class _PengingatScreenState extends State<PengingatScreen> {
               width: ScreenUtil().setWidth(320),
               child: ElevatedButton(
                   style: ElevatedButton.styleFrom(backgroundColor: biruMain),
-                  onPressed: () {},
-                  child: Text("Add new Reminder",style: TextStyle(fontSize: ScreenUtil().setSp(15)),)),
+                  onPressed: () {
+                    PersistentNavBarNavigator.pushDynamicScreen(
+                      context,
+                      screen: MaterialPageRoute(builder: ((context) {
+                        return const AddReminderPage();
+                      })),
+                      withNavBar: false,
+                    );
+                  },
+                  child: Text(
+                    "Add new Reminder",
+                    style: TextStyle(fontSize: ScreenUtil().setSp(15)),
+                  )),
             ))
           ],
         ),
